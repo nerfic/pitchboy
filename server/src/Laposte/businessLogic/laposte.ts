@@ -36,6 +36,17 @@ class LaPoste {
         }
     }
 
+    deleteCityByZipCode(zipcode: string) {
+        const cityIndex = LaPoste.data.findIndex((item: IDatabase) => item.fields.code_postal === zipcode);
+
+        if (cityIndex !== -1) {
+            LaPoste.data.splice(cityIndex, 1);
+            fs.writeFileSync('./src/Services/database/laposte_hexasmal.json', JSON.stringify(LaPoste.data, null, 2), 'utf-8');
+            return 'Objet supprimé avec succès';
+        } else {
+            return 'Code postal non trouvé';
+        }
+    }
 
 }
 
