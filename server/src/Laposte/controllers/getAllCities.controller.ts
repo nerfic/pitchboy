@@ -2,7 +2,7 @@ import fs from 'fs';
 import { Request, Response } from 'express';
 import { IDatabase } from '../../Services/database/entities';
 
-const getAllLaposte = async (req: Request, res: Response) => {
+const getAllCities = async (req: Request, res: Response) => {
     try {
         fs.readFile('./src/Services/database/laposte_hexasmal.json', 'utf8', (err, data) => {
             if (err) {
@@ -19,4 +19,4 @@ const getAllLaposte = async (req: Request, res: Response) => {
     }
 }
 
-export default getAllLaposte;
+export default getAllCities;

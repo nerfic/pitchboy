@@ -3,6 +3,6 @@ import * as controller from '../controllers';
 
 const router = express.Router();
 
-router.get('/all-cities', controller.getAllLaposte);
+router.get('/all-cities', controller.getAllCities);
 
 export default router;

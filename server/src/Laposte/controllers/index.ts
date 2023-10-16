@@ -1,5 +1,5 @@
-import getAllLaposte from "./getAllLaposte.controller";
+import getAllCities from "./getAllCities.controller";
 
 export {
-    getAllLaposte
+    getAllCities
 }
