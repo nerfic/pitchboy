@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { IDatabase } from '../../Services/database/entities';
+import { IDatabase, IFields } from '../../Services/database/entities';
 
 class LaPoste {
     static data = JSON.parse(fs.readFileSync('./src/Services/database/laposte_hexasmal.json', 'utf-8'));
@@ -11,8 +11,32 @@ class LaPoste {
 
     getCityWithZipCode(zipcode: string) {
         const cityData = LaPoste.data.find((item: IDatabase) => item.fields.code_postal === zipcode);
-        return cityData;
+        return cityData ? cityData : 'Aucune commune';
     }
+
+    updateCityByZipCode(zipcode: string, updatedData: IFields) {
+        const cityIndex = LaPoste.data.findIndex((item: IDatabase) => item.fields.code_postal === zipcode);
+
+        if (cityIndex !== -1) {
+            const existingData = LaPoste.data[cityIndex];
+
+            const newData = {
+                ...existingData,
+                fields: {
+                    ...existingData.fields,
+                    ...updatedData
+                }
+            };
+
+            LaPoste.data[cityIndex] = newData;
+            fs.writeFileSync('./src/Services/database/laposte_hexasmal.json', JSON.stringify(LaPoste.data, null, 2), 'utf-8');
+            return newData;
+        } else {
+            return 'Code postal non trouvé';
+        }
+    }
+
+
 }
 
 export default new LaPoste();
