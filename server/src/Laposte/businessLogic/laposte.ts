@@ -48,6 +48,14 @@ class LaPoste {
         }
     }
 
+    //need to debug
+    getAllCitiesWithPagination(page: number, pageSize: number, offset: number) {
+        const startIndex = (page - 1) * pageSize + offset;
+        const endIndex = startIndex + pageSize;
+        const citiesInPage = LaPoste.data.slice(startIndex, endIndex);
+        return citiesInPage;
+    }
+
 }
 
 export default new LaPoste();

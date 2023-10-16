@@ -13,4 +13,6 @@ router.put('/city/:zipcode', joiSchemaBodyValidation(schema.putCityByZipCode, tr
 
 router.delete('/city/:zipcode', controller.delCityWithZipCode);
 
+router.get('/all-cities-with-pagination', controller.getAllCitiesWithPagination);
+
 export default router;
