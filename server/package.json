@@ -18,6 +18,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "joi": "^17.11.0"
   }
 }
