@@ -11,4 +11,6 @@ router.get('/city/:zipcode', controller.getCityWithZipCode);
 
 router.put('/city/:zipcode', joiSchemaBodyValidation(schema.putCityByZipCode, true), controller.putCityByZipCode);
 
+router.delete('/city/:zipcode', controller.delCityWithZipCode);
+
 export default router;
