@@ -8,6 +8,11 @@ class LaPoste {
         const allCities = LaPoste.data.map((item: IDatabase) => item.fields.nom_de_la_commune);
         return allCities;
     }
+
+    getCityWithZipCode(zipcode: string) {
+        const cityData = LaPoste.data.find((item: IDatabase) => item.fields.code_postal === zipcode);
+        return cityData;
+    }
 }
 
 export default new LaPoste();
